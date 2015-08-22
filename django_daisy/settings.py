@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'compressor',
     'geoposition',
+    'authentication',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -72,7 +73,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Copenhagen'
 
 USE_I18N = True
 
@@ -114,3 +115,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
+
+# Use the custom account model I built!
+AUTH_USER_MODEL = 'authentication.Account'

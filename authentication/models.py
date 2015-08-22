@@ -11,6 +11,23 @@ class AccountManager(BaseUserManager):
         if not kwargs.get('username'):
             raise ValueError(_('Please use a valid username')) # Internationalized error
 
+        account = self.model(
+            email=self.normalize_email(email),username=kwargs.get('username')
+        )
+
+        account.set_password(password) # handles salting and hashing
+        account.save()
+
+        return account
+
+    def create_superuser(self, email, password, **kwargs):
+        account = self.create_user(email, password, **kwargs) # Password is not optional
+
+        account.is_admin=True # Other big difference, set admin flag to true
+        account.save()
+
+        return account
+
     def create_super_user(self):
         pass
 
@@ -21,7 +38,7 @@ class Account(AbstractBaseUser):
 
     first_name = models.CharField(max_length=20,blank=True)
     last_name = models.CharField(max_length=40,blank=True)
-    location = models.GeopositionField()
+    location = GeopositionField()
 
     created_at = models.DateTimeField(auto_now_add=True) # auto_now_add updates once only
     updated_at = models.DateTimeField(auto_now=True) # auto_now updates everytime

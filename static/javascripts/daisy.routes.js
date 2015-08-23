@@ -1,8 +1,7 @@
 (function(){
     'use strict';
 
-    angular
-        .module('daisy.routes')
+    angular.module('daisy.routes')
         .config(config);
 
     config.$inject = ['$routeProvider'];

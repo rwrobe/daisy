@@ -1,8 +1,7 @@
 (function () {
   'use strict';
 
-  angular
-    .module('daisy.authentication.services')
+  angular.module('daisy.authentication.services')
     .factory('Authentication', Authentication);
 
   Authentication.$inject = ['$cookies', '$http'];
@@ -15,11 +14,11 @@
 
     return Authentication;
 
-    function register(email, password, username) {
+    function register(email, username, password) {
       return $http.post('/api/v1/accounts/', {
+        email: email,
         username: username,
-        password: password,
-        email: email
+        password: password
       });
     }
   }

@@ -1,8 +1,7 @@
 (function(){
     'use strict';
 
-    angular
-        .module('daisy.config')
+    angular.module('daisy.config')
         .config(config);
 
     config.$inject = ['$locationProvider'];

@@ -1,8 +1,7 @@
 (function(){
     'use strict';
 
-    angular
-        .module('daisy.authentication',[
+    angular.module('daisy.authentication',[
             'daisy.authentication.controllers',
             'daisy.authentication.services'
         ]);

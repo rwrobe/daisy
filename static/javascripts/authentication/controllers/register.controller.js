@@ -1,8 +1,7 @@
 (function(){
     'use strict';
 
-    angular
-        .module('daisy.authentication.controllers')
+    angular.module('daisy.authentication.controllers')
         .controller('RegisterController', RegisterController);
 
     RegisterController.$inject = ['$location', '$scope', 'Authentication'];

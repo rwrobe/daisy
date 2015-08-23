@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from geoposition import Geoposition
 from geoposition.fields import GeopositionField
 from django.utils.translation import ugettext as _
 
@@ -28,9 +29,6 @@ class AccountManager(BaseUserManager):
 
         return account
 
-    def create_super_user(self):
-        pass
-
 # Extend AbstractBaseUser to add location field and allow users to login with an email address instead of just a username.
 class Account(AbstractBaseUser):
     email = models.EmailField(unique=True)
@@ -38,7 +36,7 @@ class Account(AbstractBaseUser):
 
     first_name = models.CharField(max_length=20,blank=True)
     last_name = models.CharField(max_length=40,blank=True)
-    location = GeopositionField()
+    location = GeopositionField(default=Geoposition(55.67, 12.52))
 
     created_at = models.DateTimeField(auto_now_add=True) # auto_now_add updates once only
     updated_at = models.DateTimeField(auto_now=True) # auto_now updates everytime

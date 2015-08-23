@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h1>Login</h1>
+
+            <div class="well">
+                <form role="form" ng-submit="vm.login()">
+                    <div class="form-group">
+                        <label for="login__email">Email</label>
+                        <input type="email" class="form-control" ng-model="vm.email" placeholder="you@domain.com" />
+                    </div>
+                    <div class="form-group">
+                        <label for="login__password">Password</label>
+                        <input type="password" class="form-control" ng-model="vm.password" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

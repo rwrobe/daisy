@@ -11,6 +11,14 @@
 
         vm.register = register;
 
+        /** Kick them to the homepage if already registered and logged in */
+        activate();
+
+        function activate(){
+           if( Authentication.isAuthenticated() )
+            $location.url('/');
+        }
+
         function register(){
             Authentication.register(vm.email, vm.username, vm.password);
         }

@@ -1,7 +1,10 @@
-from rest_framework import viewsets, status, permissions
+from rest_framework import viewsets, views, status, permissions
 from rest_framework.response import Response
 from authentication.models import Account
 from authentication.serializers import AccountSerializer
+from django.utils.translation import ugettext as _
+import json
+from django.contrib.auth import authenticate, login, logout
 from django.utils.translation import ugettext as _
 
 # From REST framework
@@ -40,3 +43,40 @@ class AccountViewSet(viewsets.ModelViewSet):
             'status': 'Bad request',
             'message': _('Your account could not be created. Please contact an administrator, or just do it right next time.')
         }, status=status.HTTP_400_BAD_REQUEST)
+
+# Login API View
+class LoginView(views.APIView):
+    def post(self, request, format=None):
+        data = json.loads(request.body)
+
+        email = data.get('email', None)
+        password = data.get('password')
+
+        account = authenticate(email=email, password=password)
+
+        if account is not None:
+            if account.is_active:
+                login(request, account)
+
+                serialized = AccountSerializer(account)
+
+                return Response(serialized.data)
+            else:
+                return Response({
+                    'status': 'Unauthorized',
+                    'message': _('Sorry, we disabled this account. Please contact an admin.')
+                }, status=status.HTTP_401_UNAUTHORIZED)
+        else:
+            return Response({
+                'status': 'Unauthorized',
+                'message': _('Incorrect user/password combination')
+            }, status=status.HTTP_401_UNAUTHORIZED)
+
+# Logout View
+class LogoutView(views.APIView):
+    permissions = (permissions.IsAuthenticated,)
+
+    def post(self, request, format=None):
+        logout(request)
+
+        return Response({}, status=status.HTTP_204_NO_CONTENT)

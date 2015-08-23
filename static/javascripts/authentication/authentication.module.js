@@ -6,9 +6,7 @@
             'daisy.authentication.services'
         ]);
 
-    angular
-        .module('daisy.authentication.controllers',[]);
+    angular.module('daisy.authentication.controllers',[]);
 
-    angular
-        .module('daisy.authentication.services', ['ngCookies']);
+    angular.module('daisy.authentication.services', ['ngCookies']);
 })();

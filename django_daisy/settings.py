@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'compressor',
     'geoposition',
     'authentication',
+    'risks',
 )
 
 MIDDLEWARE_CLASSES = (

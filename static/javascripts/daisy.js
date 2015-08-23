@@ -2,7 +2,8 @@ angular
   .module('daisy', [
         'daisy.config',
         'daisy.routes',
-        'daisy.authentication'
+        'daisy.authentication',
+        'daisy.layout'
     ]);
 
 angular

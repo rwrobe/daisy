@@ -1,8 +1,11 @@
+import decimal
+import json
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.utils.translation import ugettext as _
 from geoposition import Geoposition
 from geoposition.fields import GeopositionField
-from django.utils.translation import ugettext as _
+
 
 class AccountManager(BaseUserManager):
     def create_user(self, email, password=None, **kwargs):
@@ -36,10 +39,10 @@ class Account(AbstractBaseUser):
 
     first_name = models.CharField(max_length=20,blank=True)
     last_name = models.CharField(max_length=40,blank=True)
-    location = GeopositionField(default=Geoposition(55.67, 12.52))
+    #location = GeopositionField(default=Geoposition(55.67, 12.52))
 
     created_at = models.DateTimeField(auto_now_add=True) # auto_now_add updates once only
-    updated_at = models.DateTimeField(auto_now=True) # auto_now updates everytime
+    updated_at = models.DateTimeField(auto_now=True) # auto_now updates every time
 
     is_admin = models.BooleanField(default=False) # need this to configure the odds per category
 
@@ -59,3 +62,17 @@ class Account(AbstractBaseUser):
     # Short name will just be their first name
     def get_short_name(self):
         return self.first_name
+
+    # Create a dictionary of the lat and lon from position to be serialized
+    #def lat_lon_dict(self):
+    #    return {'lat': self.location.latitude, 'lon': self.location.longitude}
+
+"""
+ To serialize the lat/lon, we have to convert location to two decimal values and then subclass
+ JSONEncoder
+"""
+class DecimalEncoder(json.JSONEncoder):
+    def _iterencode(self, o, markers=None):
+        if isinstance(o, decimal.Decimal):
+            return (str(o) for o in [o])
+        return super(DecimalEncoder, self)._iterencode(o, markers)

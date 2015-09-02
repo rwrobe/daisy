@@ -3,7 +3,9 @@ angular
         'daisy.config',
         'daisy.routes',
         'daisy.authentication',
-        'daisy.layout'
+        'daisy.layout',
+        'daisy.risks',
+        'daisy.utils'
     ]);
 
 angular

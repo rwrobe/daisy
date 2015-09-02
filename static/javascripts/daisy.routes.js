@@ -15,6 +15,10 @@
             controller: 'LoginController',
             controllerAs: 'vm',
             templateUrl: 'static/templates/authentication/login.html'
-        }).otherwise('/');
+        }).when('/', {
+            controller: 'IndexController',
+            controllerAs: 'vm',
+            templateUrl: 'static/templates/layout/index.html'
+        });
     }
 })();

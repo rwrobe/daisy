@@ -8,5 +8,20 @@
 
 <risks risks="vm.risks" ng-show="vm.risks && vm.risks.length"></risks>
 
+	<nav class="new-risk">
+        <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-new-risk" href="#nav"
+           ng-show="vm.isAuthenticated"></a>
+		<ul id="nav">
+			<li><a href="#" class="transportation"
+                   ng-dialog="/static/templates/risks/new-transportation-risk.html"
+                   ng-dialog-controller="NewRiskController as vm"></a></li>
+			<li><a href="#" class="sedentary"
+                   ng-dialog="/static/templates/risks/new-sedentary-risk.html"
+                   ng-dialog-controller="NewRiskController as vm"></a></li>
+			<li><a href="#" class="sports"
+                   ng-dialog="/static/templates/risks/new-sports-risk.html"
+                   ng-dialog-controller="NewRiskController as vm"></a></li>
+		</ul>
+	</nav>
 </body>
 </html>

@@ -12,6 +12,6 @@ class RiskSerializer(serializers.ModelSerializer):
         read_only_fields = ('id', 'created_at', 'updated_at')
 
     def get_validation_exclusions(self, *args, **kwargs):
-        exclusions = super(PostSerializer, self).get_validations_exclusions()
+        exclusions = super(RiskSerializer, self).get_validations_exclusions()
 
         return exclusions + ['user']

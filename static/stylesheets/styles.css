@@ -27,7 +27,11 @@
 }
 article.risk {
   position: relative;
-  height: 150px;
+  height: 250px;
+  border: 10px solid white;
+  background-size: cover !important;
+  background-position: bottom center;
+  background-repeat: no-repeat;
 }
 article.risk header.duration {
   height: auto;
@@ -41,14 +45,187 @@ article.risk header.duration {
 article.risk header.icon.transportation {
   background-color: rgba(255, 0, 0, 0.45);
 }
-article.risk footer.daisies {
+article.risk header .daisies {
   position: absolute;
-  bottom: 5px;
+  top: 5px;
   right: 5px;
 }
-article.risk footer.daisies img {
+article.risk header .daisies ul {
+  list-style: none;
+  margin: 0;
+}
+article.risk header .daisies ul li {
+  display: inline-block;
+}
+article.risk header .daisies ul li span:before {
+  content: '•';
+  color: #666;
+  width: 15px;
+  display: block;
+}
+article.risk header .daisies img {
   max-height: 20px;
 }
+article.risk button.btn-trash {
+  width: 20px !important;
+  height: 20px !important;
+  position: absolute;
+  top: -25px;
+  left: -25px;
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+
+}
+article.risk button.btn-trash i {
+  font-size: 18px;
+  position: absolute !important;
+  top: 6px !important;
+  left: 8px !important;
+}
+article.risk:hover button.btn-trash {
+  opacity: 1;
+}
+article.risk.car {
+  background: url('/static/assets/risks/car.jpg');
+}
+article.risk.plane {
+  background: url('/static/assets/risks/plane.jpg');
+}
+article.risk.train {
+  background: url('/static/assets/risks/train.jpg');
+}
+article.risk.boat {
+  background: url('/static/assets/risks/boat.jpg');
+}
+article.risk.bus {
+  background: url('/static/assets/risks/bus.jpg');
+}
+article.risk.work {
+  background: url('/static/assets/risks/work.jpg');
+}
+article.risk.tv {
+  background: url('/static/assets/risks/tv.jpg');
+}
+article.risk.reading {
+  background: url('/static/assets/risks/reading.jpg');
+}
+article.risk.cardio {
+  background: url('/static/assets/risks/cardio.jpg');
+}
+article.risk.strength {
+  background: url('/static/assets/risks/strength.jpg');
+}
+article.risk.zombie {
+  background: url('/static/assets/risks/zombie.jpg');
+}
+
 .no-risks-here {
+  text-align: center;
+  font-size: 55px;
+  color: #A5A5A5;
+  position: fixed;
+  top: 50%
+}
+nav.new-risk {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  height: 250px;
+  width: 66px;
+  opacity: 1;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+.btn-new-risk {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #191919 !important;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  transition: all .3s ease;
+  z-index: 10;
+}
+nav.new-risk:hover .btn-new-risk {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  transition: all .3s ease;
+}
+nav.new-risk ul {
+  list-style: none;
+  z-index: 1;
+}
+nav.new-risk ul li a {
+  display: block;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .7s cubic-bezier(.72, -0.26, .19, 1.25);
+  -o-transition: all .7s cubic-bezier(.72, -0.26, .19, 1.25);
+  box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+  overflow: hidden;
+}
+li a.transportation,
+li a.sedentary,
+li a.sports {
+}
+li a.transportation::after,
+li a.sedentary::after,
+li a.sports::after {
+  content: "";
+  font-family: FontAwesome;
+  font-size: 22px;
+  color: #fff;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+nav.new-risk li a.transportation::after {
+  content: '\f1b9';
+  -webkit-transform: translate3d(50%,11px,0);
+  transform: translate3d(50%,11px,0);
+}
+nav.new-risk li a.sedentary::after {
+  content: '\f108';
+  -webkit-transform: translate3d(13px,12px,0);
+  transform: translate3d(13px,12px,0);
+}
+nav.new-risk li a.sports::after {
+  content: '\f1e3';
+  -webkit-transform: translate3d(14px,12px,0);
+  transform: translate3d(14px,12px,0);
+}
+nav.new-risk:hover li a.sedentary {
+  bottom: 124px;
+  background: green;
+}
+nav.new-risk:hover li a.transportation {
+  bottom: 65px;
+  background: red;
+}
+nav.new-risk:hover li a.sports {
+  bottom: 183px;
+  background: blue;
+}
+.form-group label {
+  margin-top: 20px;
+}
+.snackbar {
   text-align: center;
 }

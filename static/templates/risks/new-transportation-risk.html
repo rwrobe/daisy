@@ -1,0 +1,22 @@
+<form role="form" ng-submit="vm.submit()">
+  <div class="form-group">
+
+    <label for="code">What was your means of conveyance?</label>
+    <select name="code" class="form-control" ng-model="vm.code">
+        <option value="101">Car</option>
+        <option value="102">Bus</option>
+        <option value="103">Train</option>
+        <option value="104">Boat</option>
+        <option value="105">Plane</option>
+    </select>
+
+    <label for="duration">For how many minutes?</label>
+    <input type="number" name="duration" class="form-control" ng-model="vm.duration"></input>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  </div>
+</form>

@@ -14,7 +14,7 @@ class RiskViewSet(viewsets.ModelViewSet):
         return (permissions.IsAuthenticated(),IsUserRisk(),)
 
     def perform_create(self, serializer):
-        instance = serializer.save(author=self.request.user)
+        instance = serializer.save(user=self.request.user)
 
         return super(RiskViewSet, self).perform_create(serializer)
 
@@ -23,7 +23,7 @@ class UserRisksViewSet(viewsets.ViewSet):
     serializer = RiskSerializer
 
     def list(self, request, account_username=None):
-        queryset = self.queryset.filter(author__username = account_username)
+        queryset = self.queryset.filter(user = account_username)
         serialized = self.serializer_class(queryset, many=True)
 
         return Response(serialized.data)

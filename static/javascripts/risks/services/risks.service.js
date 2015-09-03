@@ -10,6 +10,7 @@
         var Risks = {
             all: all,
             create: create,
+            destroy: destroy,
             get: get
         }
 
@@ -19,11 +20,16 @@
             return $http.get('/api/v1/risks/');
         }
 
-        function create(code, duration){
+        function create(code, duration, rating){
             return $http.post('/api/v1/risks/', {
-               code: code,
-               duration: duration
+                code: code,
+                duration: duration,
+                rating: rating
             });
+        }
+
+        function destroy(risk){
+            return $http.delete('/api/v1/risks/' + risk.id + '/');
         }
 
         function get(username){

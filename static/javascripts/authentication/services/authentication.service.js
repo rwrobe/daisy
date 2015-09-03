@@ -4,9 +4,9 @@
   angular.module('daisy.authentication.services')
     .factory('Authentication', Authentication);
 
-  Authentication.$inject = ['$cookies', '$http'];
+  Authentication.$inject = ['$cookies', '$http', 'Snackbar'];
 
-  function Authentication($cookies, $http) {
+  function Authentication($cookies, $http, Snackbar) {
 
     /** Expose the class method */
     var Authentication = {
@@ -37,8 +37,7 @@
 
         function onFailure(data, status, headers, config){
             //window.location = '/login'
-            console.log('fail!');
-            /** @todo Add a flash message for failure */
+            Snackbar.show('Wrong user/pass combo. I suspect you need more practice operating your keyboard.');
         }
     }
 

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="well dont-pad-me-bro">
-      <article class="risk car">
+      <article class="risk {{ risk.code | codeInterpreter:'class' }}">
 
         <form ng-submit="vm.destroy()">
             <input type="hidden" name="id" ng-model="vm.id" value="{{ data }}"></input>
@@ -11,17 +11,11 @@
         <header class="duration">
 
             {{ risk.duration }} min.
-            <div class="daisies">
-                <ul>
-                    <li><img src="/static/assets/daisy-sm.png" /></li>
-                    <li><img src="/static/assets/daisy-sm.png" /></li>
-                    <li><img src="/static/assets/daisy-sm.png" /></li>
-                    <li><span></span></li>
-                    <li><span></span></li>
-
-                </ul>
-            </div>
+            <span title="Micromorts (µmt) are a standardized unit of the risk of death. 1 µmt is equal to a 1 in a million chance of death.">{{ ((risk.code | codeInterpreter:'risk') * (risk.duration / 60)) | rounder:this }}µm<sub>t</sub></span>
         </header>
+        <footer>
+            <h1>{{ risk.code | codeInterpreter:'message' }}</h1>
+        </footer>
 
         <div class="icon {{ risk.subtype }}"></div>
 

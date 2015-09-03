@@ -10,61 +10,12 @@
         var vm = this;
 
         vm.columns = [];
-
-        vm.riskList = [{
-                code: 101,
-                class: 'car'
-            }, {
-                code: 102,
-                class: 'bus'
-            }, {
-                code: 103,
-                class: 'train'
-            }, {
-                code: 104,
-                class: 'boat'
-            }, {
-                code: 105,
-                class: 'plane'
-            }, {
-                code: 201,
-                class: 'work'
-            }, {
-                code: 202,
-                class: 'tv'
-            }, {
-                code: 203,
-                class: 'reading'
-            }, {
-                code: 301,
-                class: 'cardio'
-            }, {
-                code: 302,
-                class: 'strength'
-            }, {
-                code: 303,
-                class: 'zombie'
-            }];
-
+        
         activate();
-        codeConverter();
 
         function activate(){
             $scope.$watchCollection(function () { return $scope.risks; }, render);
             $scope.$watch(function () { return $(window).width(); }, render);
-        }
-
-        /**
-         * Returns the associated class of the object
-         * @param code
-         * @returns {*}
-         */
-        function getClass(code){
-            for(var key in riskList){
-                if( riskList[key].code === code ){
-                    return riskList[key].class;
-                }
-            }
         }
 
         function approximateShortestColumn() {

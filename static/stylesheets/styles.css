@@ -1,3 +1,6 @@
+body, h1, h2, h3, p, span {
+  font-family: 'Titillium Web', sans-serif;
+}
 #main-nav {
   position: relative;
   background: #191919;
@@ -30,46 +33,81 @@ article.risk {
   height: 250px;
   border: 10px solid white;
   background-size: cover !important;
-  background-position: bottom center;
+  background-position: bottom center !important;
   background-repeat: no-repeat;
 }
 article.risk header.duration {
   height: auto;
-  padding: 5px 0;
+  padding: 10px;
   font-size: 22px;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
   color: #fff;
   background: #191919;
+  position: relative;
+  overflow: hidden;
+}
+article.risk header.duration::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 75px;
+  height: 51px;
+  background-color: red;
+}
+article.risk.zombie header.duration::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 120px;
+    height: 51px;
+    background-color: red;
+}
+article.risk header.duration span {
+  position: absolute;
+  font-size: 14px;
+  right: 10px;
+  top: 15px;
+  z-index: 10;
+  cursor: help;
 }
 article.risk header.icon.transportation {
   background-color: rgba(255, 0, 0, 0.45);
 }
-article.risk header .daisies {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-article.risk header .daisies ul {
-  list-style: none;
-  margin: 0;
-}
-article.risk header .daisies ul li {
-  display: inline-block;
-}
-article.risk header .daisies ul li span:before {
-  content: '•';
-  color: #666;
-  width: 15px;
-  display: block;
-}
 article.risk header .daisies img {
   max-height: 20px;
+}
+article.risk footer {
+  background-color: rgba(51,51,51,0.6);
+  height: calc( 100% - 51px );
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  opacity: 0;
+  transition: all 0.3s;
+}
+article.risk:hover footer {
+  opacity: 1;
+}
+article.risk footer h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  position: absolute;
+  bottom: 50%;
+  width: 100%;
+  transform: translateY(50%);
 }
 article.risk button.btn-trash {
   width: 20px !important;
   height: 20px !important;
   position: absolute;
+  background-color: red;
   top: -25px;
   left: -25px;
   opacity: 0;
@@ -130,6 +168,52 @@ article.risk.zombie {
   position: fixed;
   top: 50%
 }
+span.mmt-meter {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  background-color: red;
+  padding: 10px;
+  height: 120px;
+  width: 150px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  border: 5px solid #fff;
+  z-index: 20;
+}
+span.mmt-meter span.total {
+  text-transform: none;
+  font-size: 56px;
+  line-height: 45px;
+  margin: 0;
+  font-weight: 700;
+}
+span.mmt-meter span.unit {
+  text-transform: none;
+  font-size: 12px;
+  display: block;
+  background-color: #191919;
+  padding: 5px;
+  margin: 0;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -25px;
+}
+span.mmt-meter span.unit {
+    text-transform: none;
+    font-size: 12px;
+    margin: 0;
+    display: block;
+    background-color: #191919;
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
 nav.new-risk {
   position: fixed;
   bottom: 20px;
@@ -137,6 +221,7 @@ nav.new-risk {
   height: 250px;
   width: 66px;
   opacity: 1;
+  z-index: 20;
   -webkit-transition: all .3s ease;
   -moz-transition: all .3s ease;
   -o-transition: all .3s ease;
@@ -150,7 +235,7 @@ nav.new-risk {
   -webkit-transition: all .3s ease;
   -moz-transition: all .3s ease;
   transition: all .3s ease;
-  z-index: 10;
+  z-index: 20;
 }
 nav.new-risk:hover .btn-new-risk {
   -webkit-transform: rotate(-45deg);
@@ -183,6 +268,7 @@ nav.new-risk ul li a {
 li a.transportation,
 li a.sedentary,
 li a.sports {
+    background: red;
 }
 li a.transportation::after,
 li a.sedentary::after,
@@ -213,15 +299,12 @@ nav.new-risk li a.sports::after {
 }
 nav.new-risk:hover li a.sedentary {
   bottom: 124px;
-  background: green;
 }
 nav.new-risk:hover li a.transportation {
   bottom: 65px;
-  background: red;
 }
 nav.new-risk:hover li a.sports {
   bottom: 183px;
-  background: blue;
 }
 .form-group label {
   margin-top: 20px;

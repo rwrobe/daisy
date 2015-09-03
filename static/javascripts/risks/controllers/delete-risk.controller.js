@@ -14,16 +14,8 @@
 
         function destroy(){
 
-            $rootScope.$broadcast('risk.destroyed', {
-                user: {
-                    username: Authentication.getAuthenticatedAccount().username
-                },
-                id: id
-            });
+            Risks.destroy(vm.risk.id).then(delOnSuccess, delOnFailure);
 
-            $scope.closeThisDialog();
-
-            Risks.destroy(vm.id).then(delOnSuccess, delOnFailure);
 
             function delOnSuccess(data, status, headers, config){
 

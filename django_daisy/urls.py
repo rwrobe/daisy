@@ -15,6 +15,7 @@ users_router = routers.NestedSimpleRouter(
 )
 users_router.register(r'risks', UserRisksViewSet) # Adds a risks endpoint for URLs like /api/v1/users/risks/
 
+
 urlpatterns = patterns(
     '',
     # API endpoint for account creation

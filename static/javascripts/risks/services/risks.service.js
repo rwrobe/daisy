@@ -28,8 +28,8 @@
             });
         }
 
-        function destroy(risk){
-            return $http.delete('/api/v1/risks/' + risk.id + '/');
+        function destroy(id){
+            return $http.delete('/api/v1/risks/' + id + '/');
         }
 
         function get(username){

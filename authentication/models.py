@@ -63,6 +63,9 @@ class Account(AbstractBaseUser):
     def get_short_name(self):
         return self.first_name
 
+    def get_uid(self):
+        return self.id
+
     # Create a dictionary of the lat and lon from position to be serialized
     #def lat_lon_dict(self):
     #    return {'lat': self.location.latitude, 'lon': self.location.longitude}

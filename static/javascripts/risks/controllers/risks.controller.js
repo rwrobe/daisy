@@ -4,14 +4,14 @@
     angular.module('daisy.risks.controllers')
         .controller('RisksController', RisksController);
 
-    RisksController.$inject = ['$scope'];
+    RisksController.$inject = ['$rootScope', '$scope', 'Risks'];
 
-    function RisksController($scope){
+    function RisksController($rootScope, $scope, Risks){
         var vm = this;
 
         vm.columns = [];
 
-        vm.transportRiskList = [{
+        vm.riskList = [{
                 code: 101,
                 class: 'car'
             }, {
@@ -26,9 +26,7 @@
             }, {
                 code: 105,
                 class: 'plane'
-            }];
-
-        vm.sedentaryRiskList = [{
+            }, {
                 code: 201,
                 class: 'work'
             }, {
@@ -37,9 +35,7 @@
             }, {
                 code: 203,
                 class: 'reading'
-            }];
-
-        vm.sportsRiskList = [{
+            }, {
                 code: 301,
                 class: 'cardio'
             }, {
@@ -51,13 +47,27 @@
             }];
 
         activate();
+        codeConverter();
 
         function activate(){
             $scope.$watchCollection(function () { return $scope.risks; }, render);
             $scope.$watch(function () { return $(window).width(); }, render);
         }
 
-         function approximateShortestColumn() {
+        /**
+         * Returns the associated class of the object
+         * @param code
+         * @returns {*}
+         */
+        function getClass(code){
+            for(var key in riskList){
+                if( riskList[key].code === code ){
+                    return riskList[key].class;
+                }
+            }
+        }
+
+        function approximateShortestColumn() {
             var scores = vm.columns.map(columnMapFn);
 
             return scores.indexOf(Math.min.apply(this, scores));

@@ -33,7 +33,7 @@
         }
 
         function get(username){
-            return $http.get('/api/v1/accounts/' + username + '/risks/')
+            return $http.get('/api/v1/users/' + username + '/risks/')
         }
     }
 

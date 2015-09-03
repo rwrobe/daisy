@@ -4,7 +4,7 @@
     angular.module('daisy.risks.controllers')
         .controller('NewRiskController', NewRiskController);
 
-    NewRiskController.$inject = ['$rootScope', '$scope', 'Authentication', 'Snackbar', 'Risks']
+    NewRiskController.$inject = ['$rootScope', '$scope', 'Authentication', 'Snackbar', 'Risks'];
 
     function NewRiskController($rootScope, $scope, Authentication, Snackbar, Risks){
 

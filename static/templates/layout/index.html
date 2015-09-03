@@ -2,18 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Daisy</title>
 </head>
 <body>
 
+<div class="col-sm-12 no-risks-here start" ng-hide="vm.isAuthenticated">
+  <em><a href="/register">Start</a> pushin' daisies.</em>
+</div>
+
 <risks risks="vm.risks" ng-show="vm.risks && vm.risks.length"></risks>
 
-    <span class="mmt-meter">Daily Total <span class="total">0.45</span><br/><span class="unit">µmt</span></span>
+    <span class="mmt-meter" ng-show="vm.isAuthenticated">Daily Total <span class="total">0.45</span><br/><span class="unit">µmt</span></span>
 
 	<nav class="new-risk">
         <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-new-risk" href="#nav"
            ng-show="vm.isAuthenticated"></a>
-		<ul id="nav">
+		<ul id="nav" ng-show="vm.isAuthenticated">
 			<li><a href="#" class="transportation"
                    ng-dialog="/static/templates/risks/new-transportation-risk.html"
                    ng-dialog-controller="NewRiskController as vm"></a></li>
@@ -25,5 +29,6 @@
                    ng-dialog-controller="NewRiskController as vm"></a></li>
 		</ul>
 	</nav>
+
 </body>
 </html>

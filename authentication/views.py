@@ -2,6 +2,7 @@ from rest_framework import viewsets, views, status, permissions
 from rest_framework.response import Response
 from authentication.models import Account
 from authentication.serializers import AccountSerializer
+from authentication.permissions import IsAccountOwner
 from django.utils.translation import ugettext as _
 import json
 from django.contrib.auth import authenticate, login, logout

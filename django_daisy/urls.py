@@ -7,7 +7,7 @@ from risks.views import RiskViewSet, UserRisksViewSet
 
 router = routers.SimpleRouter()
 router.register(r'users',AccountViewSet)
-router.register(r'risks', RiskViewSet)
+router.register(r'risks',RiskViewSet)
 
 # Nested Router
 users_router = routers.NestedSimpleRouter(

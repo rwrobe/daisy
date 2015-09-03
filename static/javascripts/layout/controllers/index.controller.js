@@ -14,7 +14,7 @@
                     {code:201,class:'work',riskFactor:0,message:'At work'},
                     {code:202,class:'tv',riskFactor:1,message:'Watching TV'},
                     {code:203,class:'reading',riskFactor:1,message:'Reading a book'},
-                    {code:301,class:'cardio',riskFactor:2,message:'Performing cardio.'},
+                    {code:301,class:'cardio',riskFactor:2,message:'Performing cardio'},
                     {code:302,class:'strength',riskFactor:3,message:'Feats of strength'},
                     {code:303,class:'zombie',riskFactor:6000000,message:'Hunting Nazi zombies'}
                 ];

@@ -1,6 +1,9 @@
 body, h1, h2, h3, p, span {
   font-family: 'Titillium Web', sans-serif;
 }
+a:hover{
+  text-decoration: none;
+}
 #main-nav {
   position: relative;
   background: #191919;
@@ -103,7 +106,7 @@ article.risk footer h1 {
   width: 100%;
   transform: translateY(50%);
 }
-article.risk button.btn-trash {
+article.risk .btn-trash {
   width: 20px !important;
   height: 20px !important;
   position: absolute;
@@ -118,13 +121,13 @@ article.risk button.btn-trash {
   transition: all 0.3s;
 
 }
-article.risk button.btn-trash i {
+article.risk .btn-trash i {
   font-size: 18px;
   position: absolute !important;
   top: 6px !important;
   left: 8px !important;
 }
-article.risk:hover button.btn-trash {
+article.risk:hover .btn-trash {
   opacity: 1;
 }
 article.risk.car {

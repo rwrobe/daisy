@@ -1,13 +1,13 @@
 <div class="row" ng-cloak>
-  <div ng-repeat="column in vm.columns">
+  <div ng-repeat="card in vm.cards">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div ng-repeat="risk in column">
+      <div ng-repeat="risk in card">
         <risk risk="risk"></risk>
       </div>
     </div>
   </div>
 
-  <div ng-hide="vm.columns && vm.columns.length">
+  <div ng-hide="vm.cards && vm.cards.length">
     <div class="col-sm-12 no-risks-here">
       <em>I got nothing.</em>
     </div>

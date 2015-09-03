@@ -19,7 +19,7 @@
                     username: Authentication.getAuthenticatedAccount().username
                 },
                 code: vm.code,
-                duration: vm.duration,
+                duration: vm.duration
             });
 
             $scope.closeThisDialog();
@@ -46,6 +46,8 @@
                 $rootScope.$broadcast('risk.created.error');
                 Snackbar.error(data.error);
             }
+
         }
+
     }
 })();

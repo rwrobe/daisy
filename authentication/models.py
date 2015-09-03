@@ -39,7 +39,7 @@ class Account(AbstractBaseUser):
 
     first_name = models.CharField(max_length=20,blank=True)
     last_name = models.CharField(max_length=40,blank=True)
-    #location = GeopositionField(default=Geoposition(55.67, 12.52))
+    #location = GeopositionField(default=Geoposition(55.67, 12.52)) @todo: Can't serialize this mofo, gddmt
 
     created_at = models.DateTimeField(auto_now_add=True) # auto_now_add updates once only
     updated_at = models.DateTimeField(auto_now=True) # auto_now updates every time

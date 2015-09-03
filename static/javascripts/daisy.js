@@ -5,7 +5,7 @@ angular
         'daisy.authentication',
         'daisy.layout',
         'daisy.risks',
-        'daisy.utils'
+        'daisy.utils',
     ]);
 
 angular

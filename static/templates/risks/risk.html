@@ -3,14 +3,13 @@
     <div class="well dont-pad-me-bro">
       <article class="risk {{ risk.code | codeInterpreter:'class' }}">
 
-        <form ng-submit="vm.destroy()">
-            <input type="hidden" name="id" ng-model="vm.id" value="{{ data }}"></input>
-            <button type="submit" class="btn btn-circle btn-fab btn-raised btn-danger btn-trash"><i class="fa fa-close"></i></button>
-        </form>
+        <a href="#" class="btn btn-circle btn-fab btn-raised btn-danger btn-trash"
+                ng-dialog="/static/templates/risks/delete-risk.html"
+                ng-dialog-controller="DeleteRiskController as vm"><i class="fa fa-close"></i></a>
 
         <header class="duration">
 
-            {{ risk.duration }} min.
+            {{ risk.duration }} <small>min.</small>
             <span title="Micromorts (µmt) are a standardized unit of the risk of death. 1 µmt is equal to a 1 in a million chance of death.">{{ ((risk.code | codeInterpreter:'risk') * (risk.duration / 60)) | rounder:this }}µm<sub>t</sub></span>
         </header>
         <footer>

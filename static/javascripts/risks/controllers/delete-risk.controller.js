@@ -4,17 +4,17 @@
     angular.module('daisy.risks.controllers')
         .controller('DeleteRiskController', DeleteRiskController);
 
-    DeleteRiskController.$inject['$rootScope', '$scope', 'Authentication', 'Snackbar', 'Risks'];
+    DeleteRiskController.$inject = ['$rootScope', '$scope', 'Authentication', 'Snackbar', 'Risks'];
 
     function DeleteRiskController($rootScope, $scope, Authentication, Snackbar, Risks){
 
         var vm = this;
 
-        vm.deleteRisk = deleteRisk;
+        vm.destroy = destroy;
 
-        function deleteRisk(){
+        function destroy(){
 
-            $rootScope.$broadcast('risk.deleted', {
+            $rootScope.$broadcast('risk.destroyed', {
                 user: {
                     username: Authentication.getAuthenticatedAccount().username
                 },
@@ -23,18 +23,22 @@
 
             $scope.closeThisDialog();
 
-            Risks.create(vm.id).then(createOnSuccess, createOnFailure);
+            Risks.destroy(vm.id).then(delOnSuccess, delOnFailure);
 
-            function createOnSuccess(data, status, headers, config){
+            function delOnSuccess(data, status, headers, config){
 
-                Snackbar.show('Activity deleted');
+                var messageArray = [
+                    'Thank God, don\'t ever do that again',
+                    'Smart move. For once.'
+                ];
+
+                Snackbar.show(messageArray[Math.floor(Math.random() * messageArray.length)]);
             }
 
-            function createOnFailure(data, status, headers, config){
-                $rootScope.$broadcast('risk.deleted.error');
+            function delOnFailure(data, status, headers, config){
+                $rootScope.$broadcast('risk.destroyed.error');
                 Snackbar.error(data.error);
             }
         }
     }
-
 })();

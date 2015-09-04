@@ -3,14 +3,14 @@
     <div class="well dont-pad-me-bro">
       <article class="risk {{ risk.code | codeInterpreter:'class' }}">
 
-        <a href="#" class="btn btn-circle btn-fab btn-raised btn-danger btn-trash"
-                ng-dialog="/static/templates/risks/delete-risk.html"
-                ng-dialog-controller="DeleteRiskController as vm"><i class="fa fa-close"></i></a>
+        <button href="#" class="btn btn-circle btn-fab btn-raised btn-danger btn-trash"
+                ng-controller="IndexController"
+                ng-click="destroy(risk.id)"><i class="fa fa-close"></i></button>
 
         <header class="duration">
 
             {{ risk.duration }} <small>min.</small>
-            <span title="Micromorts (µmt) are a standardized unit of the risk of death. 1 µmt is equal to a 1 in a million chance of death.">{{ ((risk.code | codeInterpreter:'risk') * (risk.duration / 60)) | rounder:this }}µm<sub>t</sub></span>
+            <span class="code" title="Micromorts (µmt) are a standardized unit of the risk of death. 1 µmt is equal to a 1 in a million chance of death.">{{ ((risk.code | codeInterpreter:'risk') * (risk.duration / 60)) | rounder:this }}µm<sub>t</sub></span>
         </header>
         <footer>
             <h1>{{ risk.code | codeInterpreter:'message' }}</h1>

@@ -12,9 +12,9 @@
 
         vm.destroy = destroy;
 
-        function destroy(){
+        function destroy(id){
 
-            Risks.destroy(vm.risk.id).then(delOnSuccess, delOnFailure);
+            Risks.destroy(id).then(delOnSuccess, delOnFailure);
 
 
             function delOnSuccess(data, status, headers, config){

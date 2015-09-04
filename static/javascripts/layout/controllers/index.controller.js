@@ -54,6 +54,7 @@
         var vm = this;
 
         $scope.Math = Math;
+        $scope.destroy = destroy;
 
         vm.isAuthenticated = Authentication.isAuthenticated();
         vm.risks = [];
@@ -75,6 +76,28 @@
                 $snackbar.error(data.error);
             }
         }
+
+        function destroy(id){
+
+            Risks.destroy(id).then(delOnSuccess, delOnFailure);
+
+            function delOnSuccess(data, status, headers, config){
+
+                var messageArray = [
+                    'Thank God, don\'t ever do that again',
+                    'Smart move. For once.',
+                    'Guess we can call off the intervention',
+                    'Your mom would be proud'
+                ];
+
+                Snackbar.show(messageArray[Math.floor(Math.random() * messageArray.length)]);
+            }
+
+            function delOnFailure(data, status, headers, config){
+                Snackbar.error(data.error);
+            }
+        }
+
     }
 
 })();

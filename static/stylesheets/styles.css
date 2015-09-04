@@ -119,13 +119,16 @@ article.risk .btn-trash {
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
-
 }
 article.risk .btn-trash i {
   font-size: 18px;
   position: absolute !important;
   top: 6px !important;
   left: 8px !important;
+}
+form .delete {
+  text-align: center;
+  padding: 20px 0 0;
 }
 article.risk:hover .btn-trash {
   opacity: 1;
